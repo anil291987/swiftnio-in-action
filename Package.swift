@@ -6,33 +6,28 @@ import PackageDescription
 let package = Package(
     name: "swiftnio-in-action",
     products: [
-        // Products define the executables and libraries produced by a package, and make them visible to other packages.
-        .library(
-            name: "swiftnio-in-action",
-            targets: ["swiftnio-in-action"]),
         .library(
             name: "chapter1",
             targets: ["chapter1"]),
+        .library(
+            name: "chapter2",
+            targets: ["chapter2"]),
     ],
     dependencies: [
-        // Dependencies declare other packages that this package depends on.
-        // .package(url: /* package url */, from: "1.0.0"),
         .package(url: "https://github.com/apple/swift-nio.git", from: "1.5.1")
     ],
     targets: [
-        // Targets are the basic building blocks of a package. A target can define a module or a test suite.
-        // Targets can depend on other targets in this package, and on products in packages which this package depends on.
-        .target(
-            name: "swiftnio-in-action",
-            dependencies: []),
         .target(
             name: "chapter1",
             dependencies: ["NIO"]),
-        .testTarget(
-            name: "swiftnio-in-actionTests",
-            dependencies: ["swiftnio-in-action"]),
+        .target(
+            name: "chapter2",
+            dependencies: ["NIO"]),
         .testTarget(
             name: "chapter1Tests",
             dependencies: ["chapter1"]),
+        .testTarget(
+            name: "chapter2Tests",
+            dependencies: ["chapter2"]),
     ]
 )
