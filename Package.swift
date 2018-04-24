@@ -12,6 +12,9 @@ let package = Package(
         .library(
             name: "chapter2",
             targets: ["chapter2"]),
+        .library(
+            name: "chapter4",
+            targets: ["chapter4"]),
     ],
     dependencies: [
         .package(url: "https://github.com/apple/swift-nio.git", from: "1.5.1")
@@ -23,11 +26,17 @@ let package = Package(
         .target(
             name: "chapter2",
             dependencies: ["NIO"]),
+        .target(
+            name: "chapter4",
+            dependencies: ["NIO"]),
         .testTarget(
             name: "chapter1Tests",
             dependencies: ["chapter1"]),
         .testTarget(
             name: "chapter2Tests",
             dependencies: ["chapter2"]),
+        .testTarget(
+            name: "chapter4Tests",
+            dependencies: ["chapter4"]),
     ]
 )

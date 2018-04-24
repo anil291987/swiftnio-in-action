@@ -30,7 +30,9 @@ final class chapter1Tests: XCTestCase {
         }
         
         let serverBootstrap = ServerBootstrap(group: group)
-        let serverChannel = try serverBootstrap.childChannelInitializer({ channel  in
+        let serverChannel = try serverBootstrap
+            .serverChannelOption(ChannelOptions.socket(SocketOptionLevel(SOL_SOCKET), SO_REUSEADDR), value: 1)
+            .childChannelInitializer({ channel  in
             channel.pipeline.add(handler: ConnectHandler()).then { v in
                 channel.pipeline.add(handler: ReadHandler(message: message))
             }
